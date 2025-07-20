@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Data Angkatan')
+@section('title', 'Data Tahun Ajaran')
 @section('content')
     <div class="row">
         <div class="col-lg-6">
@@ -7,7 +7,7 @@
             {{ html()->hidden('id', $data->id) }}
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h3 class="card-title">Update Data Angkatan</h3>
+                    <h3 class="card-title">Update Data Tahun Ajaran</h3>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">

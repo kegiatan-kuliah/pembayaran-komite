@@ -67,7 +67,12 @@ class TagihanController extends Controller
 
     public function history()
     {
-        $pembayarans = Pembayaran::where('id_user', Auth::user()->id)->where('status', 'TERBAYAR')->get();
+        if(Auth::user()->role === 'ADMIN') {
+            $pembayarans = Pembayaran::where('status', 'TERBAYAR')->get();
+        } else {
+            $pembayarans = Pembayaran::where('id_user', Auth::user()->id)->where('status', 'TERBAYAR')->get();
+
+        }
 
         return view('pages.tagihan.history')->with([
             'pembayarans' => $pembayarans

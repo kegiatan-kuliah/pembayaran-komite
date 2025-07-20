@@ -12,6 +12,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Tanggal Pembayaran</th>
                                 <th>Bulan</th>
                                 <th>Biaya</th>
                                 <th>Total</th>
@@ -28,6 +29,7 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
+                                    <td>{{ $pembayaran->created_at->format('Y-m-d') }}</td>
                                     <td>{{ $pembayaran->date }}</td>
                                     <td>Rp {{ number_format($pembayaran->biaya, 0, ",", ".") }}</td>
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>

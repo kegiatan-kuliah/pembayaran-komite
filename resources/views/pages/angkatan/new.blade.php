@@ -6,7 +6,7 @@
             {{ html()->form('POST', route('angkatan.store'))->open() }}
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h3 class="card-title">Tambah Angkatan Baru</h3>
+                    <h3 class="card-title">Tambah Tahun Ajaran</h3>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">

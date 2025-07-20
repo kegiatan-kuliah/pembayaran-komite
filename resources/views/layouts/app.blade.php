@@ -35,12 +35,16 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('pembayaran.index') }}">
-                    <i class="fas fa-money-bill"></i>
-                    <span>Pembayaran</span>
-                </a>
-            </li>
+            @if(Auth::user()->role === 'SISWA')
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pembayaran.index') }}">
+                        <i class="fas fa-money-bill"></i>
+                        <span>Pembayaran</span>
+                    </a>
+                </li>
+
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('pembayaran.history') }}">
@@ -49,29 +53,32 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('laporan.index') }}">
-                    <i class="fas fa-print"></i>
-                    <span>Laporan Pembayaran</span>
-                </a>
-            </li>
+            @if(Auth::user()->role === 'ADMIN')
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-                    aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Master Data</span>
-                </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('siswa.index') }}">Data Siswa</a>
-                        <a class="collapse-item" href="{{ route('kelas.index') }}">Data Kelas</a>
-                        <a class="collapse-item" href="{{ route('angkatan.index') }}">Data Angkatan</a>
-                        <a class="collapse-item" href="{{ route('admin.index') }}">Data Admin</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('laporan.index') }}">
+                        <i class="fas fa-print"></i>
+                        <span>Laporan Pembayaran</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                        aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Master Data</span>
+                    </a>
+                    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('siswa.index') }}">Data Siswa</a>
+                            <a class="collapse-item" href="{{ route('kelas.index') }}">Data Kelas</a>
+                            <a class="collapse-item" href="{{ route('angkatan.index') }}">Data Angkatan</a>
+                            <a class="collapse-item" href="{{ route('admin.index') }}">Data Admin</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            @endif
 
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -22,6 +22,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Siswa</th>
+                                <th>Tanggal Pembayaran</th>
                                 <th>Bulan</th>
                                 <th>Biaya</th>
                                 <th>Total</th>
@@ -33,6 +34,7 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $pembayaran->user->nama }}</td>
+                                    <td>{{ $pembayaran->created_at->format('Y-m-d') }}</td>
                                     <td>{{ $pembayaran->date }}</td>
                                     <td>Rp {{ number_format($pembayaran->biaya, 0, ",", ".") }}</td>
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
