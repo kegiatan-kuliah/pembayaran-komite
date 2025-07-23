@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(ReportController::class)->prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/process', 'process')->name('process');
+        Route::post('/print', 'print')->name('print');
         Route::get('/result', 'result')->name('result');
     });
 });

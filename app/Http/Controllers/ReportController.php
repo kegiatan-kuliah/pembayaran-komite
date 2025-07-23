@@ -25,7 +25,20 @@ class ReportController extends Controller
 
         return view('pages.report.result')->with([
             'query' => $query,
+            'pembayarans' => $pembayarans,
+        ]);
+    }
+
+    public function print(Request $request)
+    {
+        $query = $request->date;
+
+        $pembayarans = Pembayaran::where('date', $query)->get();
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pages.pdf.report_pembayaran', [
             'pembayarans' => $pembayarans
         ]);
+
+        return $pdf->stream("laporan-pembayaran-{$query}.pdf");
     }
 }

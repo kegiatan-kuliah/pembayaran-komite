@@ -8,15 +8,24 @@
                     <h3 class="card-title">Laporan Pembayaran</h3>
                     
                     <div class="card-tools">
-                        <div class="d-flex">
+                        <div class="d-flex flex-row">
                             {{ html()->form('POST', route('laporan.process'))->open() }}
                                 <div class="d-flex">
-                                    {{ html()->input('month', 'date')->class('form-control mr-5')->attribute('required', true) }}
+                                    {{ html()->input('month', 'date', $query)->class('form-control mr-5')->attribute('required', true) }}
                                     <button type="submit" class="btn btn-primary">
                                         Buat Laporan
                                     </button>
                                 </div>
                             {{ html()->form()->close() }}
+
+                            @if($query) 
+                                {{ html()->form('POST', route('laporan.print'))->open() }}
+                                    {{ html()->input('hidden', 'date', $query)->class('form-control mr-5')->attribute('required', true) }}
+                                    <button type="submit" class="btn btn-primary ml-5">
+                                        Cetak Laporan
+                                    </button>
+                                {{ html()->form()->close() }}
+                            @endif
                         </div>
                     </div>
                 </div>
