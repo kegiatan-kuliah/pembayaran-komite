@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store');
         Route::post('/paid', 'paid')->name('paid');
+        Route::post('/confirm', 'confirm')->name('confirm');
         Route::get('/history', 'history')->name('history');
         Route::get('/receipt/{id}', 'receipt')->name('receipt');
     });

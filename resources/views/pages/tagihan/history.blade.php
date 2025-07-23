@@ -18,7 +18,7 @@
                                 <th>Biaya</th>
                                 <th>Total</th>
                                 <th>Status</th>
-                                <th></th>
+                                <th>Bukti Pembayaran</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -41,7 +41,38 @@
                                     <td>
                                         <a href="{{ asset('storage/'.$pembayaran->resi) }}" target="_blank">Lihat</a>
                                     </td>
-                                    <td><a href="{{ route('pembayaran.receipt', $pembayaran->id) }}" target="__blank">Lihat Tanda Terima</a></td>
+                                    <td>
+                                        @if($pembayaran->status === 'TERBAYAR')
+                                            <a href="{{ route('pembayaran.receipt', $pembayaran->id) }}" target="__blank">Lihat Tanda Terima</a>
+                                        @endif
+                                        @if($pembayaran->status === 'PENDING' && Auth::user()->role === 'ADMIN')
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
+                                                Konfirmasi Pembayaran
+                                            </button>
+                                            <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    {{ html()->form('POST', route('pembayaran.confirm'))->open() }}
+                                                    {{ html()->hidden('id', $pembayaran->id) }}
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pembayaran</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda ingin mengkonfirmasi pembayaran ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
+                                                    </div>
+                                                    {{ html()->form()->close() }}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

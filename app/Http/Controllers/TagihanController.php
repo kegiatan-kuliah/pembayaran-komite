@@ -53,20 +53,29 @@ class TagihanController extends Controller
 
         $pembayaran = Pembayaran::where('id_user', Auth::user()->id)->where('id', $request->id)->update([
             'resi' => $path,
-            'status' => 'TERBAYAR'
+            'status' => 'PENDING'
         ]);
 
         return redirect()->route('pembayaran.index')->with('success','Tagihan berhasil terbayar');
+    }
+
+    public function confirm(Request $request)
+    {
+
+        $pembayaran = Pembayaran::where('id', $request->id)->update([
+            'status' => 'TERBAYAR'
+        ]);
+
+        return redirect()->route('pembayaran.history')->with('success','Tagihan berhasil dikonfirmasi');
     }
 
 
     public function history()
     {
         if(Auth::user()->role === 'ADMIN') {
-            $pembayarans = Pembayaran::where('status', 'TERBAYAR')->get();
+            $pembayarans = Pembayaran::get();
         } else {
-            $pembayarans = Pembayaran::where('id_user', Auth::user()->id)->where('status', 'TERBAYAR')->get();
-
+            $pembayarans = Pembayaran::where('id_user', Auth::user()->id)->get();
         }
 
         return view('pages.tagihan.history')->with([
