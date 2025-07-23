@@ -50,16 +50,10 @@ class TagihanController extends Controller
     {
         $path = $request->file('resi')->store('images');
 
-        $pembayarans = Pembayaran::where('id_user', Auth::user()->id)->where('status', 'BELUM BAYAR')->get();
-
-        foreach ($pembayarans as $dt) {
-            Pembayaran::where('id', $dt->id)->update(
-                [
-                    'resi' => $path,
-                    'status' => 'TERBAYAR'
-                ],
-            );
-        }
+        $pembayaran = Pembayaran::where('id_user', Auth::user()->id)->where('id', $request->id)->update([
+            'resi' => $path,
+            'status' => 'TERBAYAR'
+        ]);
 
         return redirect()->route('pembayaran.index')->with('success','Tagihan berhasil terbayar');
     }
@@ -77,6 +71,17 @@ class TagihanController extends Controller
         return view('pages.tagihan.history')->with([
             'pembayarans' => $pembayarans
         ]);
+    }
+
+    public function receipt($id)
+    {
+        $pembayaran = Pembayaran::where('id', $id)->firstOrFail();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pages.report.receipt', [
+            'pembayaran' => $pembayaran
+        ]);
+
+        // Tampilkan di browser, bukan download
+        return $pdf->stream("tanda-terima-{$id}.pdf");
     }
 
 }

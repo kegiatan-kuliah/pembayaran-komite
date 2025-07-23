@@ -9,10 +9,14 @@
                     
                     <div class="card-tools">
                         <div class="d-flex">
-                            {{ html()->input('month', 'date', $query)->class('form-control mr-5')->attribute('required', true) }}
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Buat Laporan
-                            </button>
+                            {{ html()->form('POST', route('laporan.process'))->open() }}
+                                <div class="d-flex">
+                                    {{ html()->input('month', 'date')->class('form-control mr-5')->attribute('required', true) }}
+                                    <button type="submit" class="btn btn-primary">
+                                        Buat Laporan
+                                    </button>
+                                </div>
+                            {{ html()->form()->close() }}
                         </div>
                     </div>
                 </div>
@@ -27,6 +31,8 @@
                                 <th>Biaya</th>
                                 <th>Total</th>
                                 <th>Status</th>
+                                <th>Bukti Bayar</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +45,12 @@
                                     <td>Rp {{ number_format($pembayaran->biaya, 0, ",", ".") }}</td>
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
                                     <td>{{ $pembayaran->status }}</td>
+                                    <td>
+                                        <a href="{{ asset('storage/'.$pembayaran->resi) }}" target="_blank">Lihat</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('pembayaran.receipt', $pembayaran->id) }}" target="__blank">Lihat Tanda Terima</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -73,7 +73,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('siswa.index') }}">Data Siswa</a>
                             <a class="collapse-item" href="{{ route('kelas.index') }}">Data Kelas</a>
-                            <a class="collapse-item" href="{{ route('angkatan.index') }}">Data Angkatan</a>
+                            <a class="collapse-item" href="{{ route('angkatan.index') }}">Data Tahun Ajaran</a>
                             <a class="collapse-item" href="{{ route('admin.index') }}">Data Admin</a>
                         </div>
                     </div>

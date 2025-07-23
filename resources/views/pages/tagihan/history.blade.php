@@ -13,10 +13,12 @@
                             <tr>
                                 <th>No</th>
                                 <th>Tanggal Pembayaran</th>
+                                <th>Nama Siswa</th>
                                 <th>Bulan</th>
                                 <th>Biaya</th>
                                 <th>Total</th>
                                 <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,10 +32,12 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $pembayaran->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $pembayaran->user->nama }}</td>
                                     <td>{{ $pembayaran->date }}</td>
                                     <td>Rp {{ number_format($pembayaran->biaya, 0, ",", ".") }}</td>
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
                                     <td>{{ $pembayaran->status }}</td>
+                                    <td><a href="{{ route('pembayaran.receipt', $pembayaran->id) }}" target="__blank">Lihat Tanda Terima</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
