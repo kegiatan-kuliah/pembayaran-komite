@@ -19,6 +19,7 @@
                                 <th>Total</th>
                                 <th>Status</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,9 @@
                                     <td>Rp {{ number_format($pembayaran->biaya, 0, ",", ".") }}</td>
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
                                     <td>{{ $pembayaran->status }}</td>
+                                    <td>
+                                        <a href="{{ asset('storage/'.$pembayaran->resi) }}" target="_blank">Lihat</a>
+                                    </td>
                                     <td><a href="{{ route('pembayaran.receipt', $pembayaran->id) }}" target="__blank">Lihat Tanda Terima</a></td>
                                 </tr>
                             @endforeach

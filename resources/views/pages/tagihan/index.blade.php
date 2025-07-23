@@ -56,9 +56,12 @@
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
                                     <td>{{ $pembayaran->status }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
-                                            Upload Bukti Pembayaran
-                                        </button>
+                                        @if($pembayaran->status !== 'TERBAYAR')
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
+                                                Upload Bukti Pembayaran
+                                            </button>
+                                            
+                                        @endif
                                         <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 {{ html()->form('POST', route('pembayaran.paid'))->attribute('enctype', 'multipart/form-data')->open() }}

@@ -28,9 +28,10 @@ class TagihanController extends Controller
         $period = new \DatePeriod($start, $interval, $end);
 
         foreach ($period as $dt) {
-            Pembayaran::firstOrCreate(
+            $store = Pembayaran::firstOrCreate(
                 [
-                    'date' => $dt->format("Y-m")
+                    'date' => $dt->format("Y-m"),
+                    'id_user' => Auth::user()->id
                 ],
                 [
                     'date' => $dt->format("Y-m"),
@@ -48,7 +49,7 @@ class TagihanController extends Controller
 
     public function paid(Request $request)
     {
-        $path = $request->file('resi')->store('images');
+        $path = $request->file('resi')->store('images', 'public');
 
         $pembayaran = Pembayaran::where('id_user', Auth::user()->id)->where('id', $request->id)->update([
             'resi' => $path,

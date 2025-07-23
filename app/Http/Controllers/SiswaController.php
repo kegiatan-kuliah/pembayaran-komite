@@ -14,9 +14,22 @@ use DB;
 
 class SiswaController extends Controller
 {
-    public function index(SiswaDataTable $dataTable)
+    public function index(SiswaDataTable $dataTable, Request $request)
     {
-        return $dataTable->render('pages.siswa.index');
+        $kelas = Kelas::pluck('nama','id');
+        $dataTable->with([
+            'kelas_id' => $request->get('kelas_id') // contoh parameter
+        ]);
+        return $dataTable->render('pages.siswa.index', [
+            'kelas' => $kelas,
+            'kelas_id' => $request->get('kelas_id')
+        ]);
+    }
+
+    public function filter(Request $request)
+    {
+        $id_kelas = $request->id_kelas;
+        return redirect()->route('siswa.index', ['kelas_id' => $id_kelas]);
     }
 
     public function new()

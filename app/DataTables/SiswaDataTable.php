@@ -52,7 +52,13 @@ class SiswaDataTable extends DataTable
      */
     public function query(Siswa $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if ($this->kelas_id) {
+            $query->where('id_kelas', $this->kelas_id);
+        }
+
+        return $query;
     }
 
     /**

@@ -12,6 +12,16 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex flex-row">
+                        {{ html()->form('POST', route('siswa.filter'))->class('d-flex flex-row')->open() }}
+                            {{ html()->label('Kelas', 'id_kelas')->class('form-label mr-2') }}
+                            {{ html()->select('id_kelas', ['' => 'Pilih Kelas'] + $kelas->toArray(), $kelas_id)->attribute('required', true)
+                                    ->class('form-control mr-2')
+                            }}
+                            <a href="{{ route('siswa.index') }}" class="btn btn-default">Reset</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        {{ html()->form()->close() }}
+                    </div>
                     {{ $dataTable->table() }}
                 </div>
             </div>

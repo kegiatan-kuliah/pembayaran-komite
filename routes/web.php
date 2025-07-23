@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::post('/store', 'store')->name('store');
         Route::post('/update', 'update')->name('update');
+        Route::post('/filter', 'filter')->name('filter');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
     
