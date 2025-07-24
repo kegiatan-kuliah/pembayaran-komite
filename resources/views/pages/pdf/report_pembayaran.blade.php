@@ -48,12 +48,13 @@
     <div>
         {{-- <img src="{{ public_path('img/logo-unp.png') }}" alt="" width="70px" height="70px" style="position: absolute; top: 15px;"> --}}
         {{-- <h3 style="margin-bottom: 0px; text-align: center;">UNIVERSITAS NEGERI PADANG</h3> --}}
-        <h1 style="margin-top: 0px; margin-bottom: 0px; text-align: center;">KOMITE SEKOLAH</h1>
+        <h3 style="margin-top: 0px; margin-bottom: 0px; text-align: left;">LAPORAN KOMITE</h3>
+        <h3 style="margin-top: 0px; margin-bottom: 0px; text-align: left;">MTSS PP PERTANIAN SYEKH M. MUHSIN</h3>
         {{-- <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">Jl. Prof. Dr. Hamka, Air Tawar Bar., Kec. Padang Utara, Kota Padang, Sumatera Barat 25132</p> --}}
         {{-- <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">0751445089</p> --}}
         <hr>
     </div>
-    <h2 style="text-align: center;">Laporan Pembayaran</h2>
+
     <table>
         <thead>
             <tr>
@@ -85,6 +86,13 @@
             @endforelse
         </tbody>
     </table>
+    <div class="signature">
+        Kabupaten Solok, {{ Carbon::now()->translatedFormat('d F Y')}}<br>
+        Bendahara,
+        <br>
+        <br>
+        <br>
+    </div>
 </body>
 
 </html>

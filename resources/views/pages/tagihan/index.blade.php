@@ -60,30 +60,57 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
                                                 Upload Bukti Pembayaran
                                             </button>
-                                            
-                                        @endif
-                                        <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                {{ html()->form('POST', route('pembayaran.paid'))->attribute('enctype', 'multipart/form-data')->open() }}
-                                                {{ html()->hidden('id', $pembayaran->id) }}
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Pembayaran</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#destroyModal{{$pembayaran->id}}">
+                                                Hapus Tagihan
+                                            </button>
+
+                                            <div class="modal fade" id="destroyModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="destroyModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    {{ html()->form('POST', route('pembayaran.destroy'))->open() }}
+                                                    {{ html()->hidden('id', $pembayaran->id) }}
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="destroyModalLabel">Hapus Tagihan</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda ingin menghapus tagihan ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        {{ html()->file('resi') }}
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                                    </div>
+                                                    {{ html()->form()->close() }}
                                                 </div>
-                                                {{ html()->form()->close() }}
                                             </div>
-                                        </div>
+                                            
+                                            <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    {{ html()->form('POST', route('pembayaran.paid'))->attribute('enctype', 'multipart/form-data')->open() }}
+                                                    {{ html()->hidden('id', $pembayaran->id) }}
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Pembayaran</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {{ html()->file('resi') }}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                    {{ html()->form()->close() }}
+                                                </div>
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

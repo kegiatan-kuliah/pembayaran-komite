@@ -69,6 +69,14 @@ class TagihanController extends Controller
         return redirect()->route('pembayaran.history')->with('success','Tagihan berhasil dikonfirmasi');
     }
 
+    public function destroy(Request $request)
+    {
+
+        $pembayaran = Pembayaran::where('id', $request->id)->delete();
+
+        return redirect()->route('pembayaran.index')->with('success','Tagihan berhasil dihapus');
+    }
+
 
     public function history()
     {
