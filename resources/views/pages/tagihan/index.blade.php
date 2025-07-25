@@ -56,7 +56,7 @@
                                     <td>Rp {{ number_format($pembayaran->total, 0, ",", ".") }}</td>
                                     <td>{{ $pembayaran->status }}</td>
                                     <td>
-                                        @if($pembayaran->status === 'BELUM BAYAR')
+                                        @if($pembayaran->status === 'BELUM BAYAR' || $pembayaran->status === 'TOLAK')
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
                                                 Upload Bukti Pembayaran
                                             </button>

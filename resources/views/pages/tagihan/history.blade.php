@@ -49,6 +49,9 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
                                                 Konfirmasi Pembayaran
                                             </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
+                                                Tolak Pembayaran
+                                            </button>
                                             <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     {{ html()->form('POST', route('pembayaran.confirm'))->open() }}
@@ -62,6 +65,28 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             Apakah anda ingin mengkonfirmasi pembayaran ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
+                                                    </div>
+                                                    {{ html()->form()->close() }}
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="rejectModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    {{ html()->form('POST', route('pembayaran.reject'))->open() }}
+                                                    {{ html()->hidden('id', $pembayaran->id) }}
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="rejectModalLabel">Tolak Pembayaran</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda ingin menolak pembayaran ini?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

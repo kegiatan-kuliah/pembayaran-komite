@@ -69,6 +69,16 @@ class TagihanController extends Controller
         return redirect()->route('pembayaran.history')->with('success','Tagihan berhasil dikonfirmasi');
     }
 
+    public function reject(Request $request)
+    {
+
+        $pembayaran = Pembayaran::where('id', $request->id)->update([
+            'status' => 'TOLAK'
+        ]);
+
+        return redirect()->route('pembayaran.history')->with('success','Tagihan berhasil ditolak');
+    }
+
     public function destroy(Request $request)
     {
 
