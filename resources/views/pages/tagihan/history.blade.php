@@ -49,7 +49,7 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
                                                 Konfirmasi Pembayaran
                                             </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$pembayaran->id}}">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal{{$pembayaran->id}}">
                                                 Tolak Pembayaran
                                             </button>
                                             <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
