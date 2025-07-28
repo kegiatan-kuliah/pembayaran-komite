@@ -8,6 +8,15 @@
         .header { text-align: center; margin-bottom: 20px; }
         .table { width: 100%; margin-top: 20px; border-collapse: collapse; }
         .table td { padding: 8px; }
+        .signature {
+            float: right;
+            margin-top: 40px;
+        }
+
+        .left-signature {
+            float: left;
+            margin-top: 40px;
+        }
     </style>
 </head>
 @php
@@ -29,15 +38,28 @@
     <br><br>
     <table class="table">
         <tr>
-            <td style="text-align: center;">
-                <br><br><br>
-                ___________________________<br>
-                Penerima
+            <td colspan="2" style="text-align: center;">Kabupaten Solok, {{ Carbon::now()->translatedFormat('d F Y')}}<br></td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">
+                Yang Membayar,
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                {{ $pembayaran->user->nama }}
             </td>
-            <td style="text-align: center;">
-                <br><br><br>
-                ___________________________<br>
-                Pembayar
+            <td style="text-align: right;">
+                Yang Menerima,
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                Reni Mareta, S.Pd
             </td>
         </tr>
     </table>
