@@ -46,15 +46,16 @@
 
 <body>
     <div>
-        {{-- <img src="{{ public_path('img/logo-unp.png') }}" alt="" width="70px" height="70px" style="position: absolute; top: 15px;"> --}}
-        {{-- <h3 style="margin-bottom: 0px; text-align: center;">UNIVERSITAS NEGERI PADANG</h3> --}}
-        <h3 style="margin-top: 0px; margin-bottom: 0px; text-align: left;">LAPORAN KOMITE</h3>
-        <h3 style="margin-top: 0px; margin-bottom: 0px; text-align: left;">MTSS PP PERTANIAN SYEKH M. MUHSIN</h3>
-        {{-- <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">Jl. Prof. Dr. Hamka, Air Tawar Bar., Kec. Padang Utara, Kota Padang, Sumatera Barat 25132</p> --}}
-        {{-- <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">0751445089</p> --}}
+        <img src="{{ public_path('img/Logo1.jpg') }}" alt="" width="70px" height="70px" style="position: absolute; top: 15px;">
+        <h3 style="margin-bottom: 0px; text-align: center;">KEMENTRIAN AGAMA REPUBLIK INDONESIA</h3>
+        <h3 style="margin-bottom: 0px; text-align: center; margin-top: 0px;">KANTOR KEMENTRIAN AGAMA KABUPATEN SOLOK</h3>
+        <h3 style="margin-top: 0px; margin-bottom: 0px; text-align: center;">MTSS PP PERTANIAN SYEKH M. MUHSIN</h3>
+        <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">Jln. Tabek Supayang, Sirukam, Payung Sekaki</p>
+        <p style="margin-bottom: 0px; margin-top: 0px; text-align: center;">E-mail : syekhm.muhsin@gmail.com</p>
+        <img src="{{ public_path('img/logo2.png') }}" alt="" width="70px" height="70px" style="position: absolute; top: 15px; right: 0px;">
         <hr>
     </div>
-
+    <h3 style="text-align:center;"> Laporan Pembayaran Komite</h3>
     <table>
         <thead>
             <tr>
@@ -92,6 +93,7 @@
         <br>
         <br>
         <br>
+        Reni Mareta, S.Pd
     </div>
 </body>
 
